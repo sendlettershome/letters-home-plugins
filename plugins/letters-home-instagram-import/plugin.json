@@ -1,0 +1,40 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "letters-home-instagram-import",
+  "version": "0.1.1",
+  "description": "Guide Instagram JSON exports and selected photo-post imports through the Letters Home website.",
+  "author": {
+    "name": "Letters Home",
+    "email": "support@sendlettershome.com",
+    "url": "https://sendlettershome.com"
+  },
+  "homepage": "https://sendlettershome.com",
+  "extensions": {
+    "com.openai": {
+      "onboardingSkill": "./skills/instagram-import/SKILL.md",
+      "interface": {
+        "displayName": "Letters Home Instagram Import",
+        "shortDescription": "Import selected Instagram photo posts",
+        "longDescription": "Guides a focused Instagram JSON export (Posts, or Media with your approval) and selected photo-post review in the signed-in Letters Home website when its importer is available. Optional assistance uses browser and file controls supplied by your host; manual instructions remain available. No Node.js, MCP server, Instagram API connection or account-type change is required. The website receives dates and photo paths for all found posts for duplicate checks; approved captions and photos upload to your chosen collection. Collection sharing settings apply, and browser content may be visible to your AI host.",
+        "developerName": "Letters Home",
+        "category": "Productivity",
+        "capabilities": [
+          "Import guidance"
+        ],
+        "websiteURL": "https://sendlettershome.com",
+        "supportURL": "https://sendlettershome.com/contact",
+        "privacyPolicyURL": "https://sendlettershome.com/privacy-policy",
+        "termsOfServiceURL": "https://sendlettershome.com/terms-of-use",
+        "defaultPrompt": [
+          "Help me export my Instagram photo posts and import selected posts into my Letters Home collection.",
+          "Walk me through importing an Instagram JSON export without accessing my browser."
+        ],
+        "composerIcon": "./assets/icon.png",
+        "logo": "./assets/logo.png"
+      },
+      "publication": {
+        "release_notes": "Refine live-tested Meta Account export setup: clear unrelated categories, handle Media-only choices, resume security checks and verify accepted requests. Guide selected-post import and editable placeholder subjects."
+      }
+    }
+  }
+}

@@ -1,33 +1,43 @@
 # Letters Home plugins
 
-Export email, filter it locally, and upload it to a [Letters Home](https://sendlettershome.com) collection.
+Prepare saved email or Instagram photo posts, and upload selected content to a [Letters Home](https://sendlettershome.com) collection.
 
 - **Mail Export** — guides Gmail labeling and Google Takeout.
-- **Email Import** — filters a downloaded MBOX by address, with originals-only or both-direction selection. Requires Node.js 24+.
+- **Email Import** (`letters-home-email-import`) — filters a downloaded MBOX by address, with originals-only or both-direction selection. Local MCP requires Node.js 24+.
+- **Instagram Import** (`letters-home-instagram-import`) — guides JSON export and selected photo-post website import when available. Skills only; no Node.js or MCP server.
 
 ## Codex
 
 ```sh
-codex plugin marketplace add bustertown/letters-home-plugins --ref main
+codex plugin marketplace add sendlettershome/letters-home-plugins --ref main
 codex plugin add letters-home-mail-export@letters-home
 codex plugin add letters-home-email-import@letters-home
+codex plugin add letters-home-instagram-import@letters-home
 ```
 
 ## Claude Code
 
 ```sh
-claude plugin marketplace add bustertown/letters-home-plugins
+claude plugin marketplace add sendlettershome/letters-home-plugins
 claude plugin install letters-home-mail-export@letters-home
 claude plugin install letters-home-email-import@letters-home
+claude plugin install letters-home-instagram-import@letters-home
 ```
 
-Install either or both, then restart your host.
+Install only the plugins you need, then restart your host.
 
 ## How do I use this?
 
 Ask your agent: **“Help me export emails from alex@example.com and upload them to my Letters Home collection.”** Already have an export? Say **“Help me import this MBOX.”**
 
 The agent guides the export, asks which messages to keep, filters the downloaded archive, and helps upload it to the collection you choose.
+
+With the separate Instagram Import plugin installed, ask **“Help me export my Instagram photo posts and import selected
+posts into my Letters Home collection.”** The `instagram-import` skill checks
+website availability, guides a posts-only JSON export, and helps review the
+unzipped folder in the signed-in website. Instagram archives never go through
+the email MCP tools. Browser/file access depends on the host; manual steps remain
+available. No Graph API connection or Creator-account switch is provided.
 
 | Choose | What you keep |
 | --- | --- |

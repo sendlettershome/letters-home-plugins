@@ -1,10 +1,11 @@
 # Letters Home plugins
 
-Two plugins help prepare saved emails for [Letters Home](https://sendlettershome.com):
+Three independently installable plugins help prepare saved content for [Letters Home](https://sendlettershome.com):
 
 | Plugin | Purpose | Requirements |
 | --- | --- | --- |
 | Letters Home Mail Export | Search Gmail, apply an export label, and request a selected Google Takeout download. | Manual guidance works in any host that loads the skill. Optional browser assistance requires host browser controls and your permission. |
+| Letters Home Instagram Import | Guide a focused JSON export (Posts, or Media with approval) and selected photo-post import in the website. | No Node.js or MCP server. Manual guidance works in hosts that load skills; optional automation needs host browser/file controls and your permission. |
 | Letters Home Email Import | Filter a downloaded MBOX by address and your choice of originals only or both directions, then assist with collection upload. | Local Codex or Claude Code, Node.js 24+, an approved import folder, and a Letters Home collection. Browser upload assistance requires host browser and file controls. |
 
 This is a repository marketplace. Adding it makes the plugins available for you to install; it does not connect your Google account. The plugins have not been approved for the OpenAI or Anthropic official directories.
@@ -14,10 +15,11 @@ This is a repository marketplace. Adding it makes the plugins available for you 
 Run in a terminal with a current Codex CLI:
 
 ```sh
-codex plugin marketplace add bustertown/letters-home-plugins --ref main
+codex plugin marketplace add sendlettershome/letters-home-plugins --ref main
 codex plugin list --marketplace letters-home
 codex plugin add letters-home-mail-export@letters-home
 codex plugin add letters-home-email-import@letters-home
+codex plugin add letters-home-instagram-import@letters-home
 ```
 
 Install whichever plugins you need. Restart Codex and start a new chat after installation. The desktop Plugins view also lets you browse and install from the Letters Home source after adding it.
@@ -37,12 +39,23 @@ Create the folder first. GUI apps may not inherit terminal environment variables
 In a terminal:
 
 ```sh
-claude plugin marketplace add bustertown/letters-home-plugins
+claude plugin marketplace add sendlettershome/letters-home-plugins
 claude plugin install letters-home-mail-export@letters-home
 claude plugin install letters-home-email-import@letters-home
+claude plugin install letters-home-instagram-import@letters-home
 ```
 
 Use a current Claude Code release with plugin `userConfig` support. When enabling the importer, choose an absolute local email import folder when prompted. Put the exported raw MBOX in that folder. Use `/mcp` to check the local connection, then invoke `/letters-home-email-import:email-import` or `/letters-home-mail-export:prepare-gmail-export`.
+
+## Instagram import
+
+Install `letters-home-instagram-import` independently. For Instagram, invoke `$instagram-import` in Codex or
+`/letters-home-instagram-import:instagram-import` in Claude Code. This is export
+guidance and a website handoff, not an email MCP action. The skill checks that
+the deployed Instagram importer exists before promising upload. Dates and photo
+paths go to the website for duplicate checks; selected captions/photos upload
+only after review and authorization. Keep whole account exports out of chat.
+The website's collection sharing settings apply to imported posts. The skill ships at `skills/instagram-import/SKILL.md` inside the Instagram plugin. No email plugin, Node.js or local server is needed.
 
 ## What happens to mail
 

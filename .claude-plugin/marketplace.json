@@ -5,7 +5,7 @@
     "email": "support@sendlettershome.com"
   },
   "metadata": {
-    "description": "Gmail export guidance and private local email import for Letters Home."
+    "description": "Email export, local mail filtering and Instagram export guidance for Letters Home."
   },
   "plugins": [
     {
@@ -17,6 +17,11 @@
       "name": "letters-home-email-import",
       "source": "./plugins/letters-home-email-import/claude-code",
       "description": "Choose original messages or both directions locally and guide private collection upload."
+    },
+    {
+      "name": "letters-home-instagram-import",
+      "source": "./plugins/letters-home-instagram-import",
+      "description": "Guide Instagram JSON exports and selected photo-post imports through the Letters Home website."
     }
   ]
 }

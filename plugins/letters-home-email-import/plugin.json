@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "letters-home-email-import",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Choose original messages or both directions locally and guide private collection upload.",
   "author": {
     "name": "Letters Home",

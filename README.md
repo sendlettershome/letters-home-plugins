@@ -18,7 +18,7 @@ You choose what to keep and which collection receives it. Your assistant can hel
 
 ## Install the helper you need
 
-Install directly from the Letters Home GitHub repository. In each example, the `marketplace add` command tells your assistant where to find the plugins on GitHub. Then run the install command for each helper you want and restart your assistant. See the [setup guide](GUIDE.md) for details, including the Node.js 24+ requirement for the local Gmail archive filter.
+Install directly from the Letters Home GitHub repository. In each example, the `marketplace add` command tells your assistant where to find the plugins on GitHub. Then run the install command for each helper you want and restart your assistant. See the [setup guide](GUIDE.md) for details, including the Node.js 24+ requirement for the local Gmail archive filter. In order to install, just copy these snippets and paste them into your chat with your agent and it will do the rest of the work!
 
 ### Codex
 

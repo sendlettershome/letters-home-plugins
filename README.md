@@ -1,12 +1,26 @@
 # Letters Home plugins
 
-Prepare saved email or Instagram photo posts, and upload selected content to a [Letters Home](https://sendlettershome.com) collection.
+Bring the emails, photos, and posts you want to keep into a [Letters Home](https://sendlettershome.com) collection. Pick the helper for your source, then tell your assistant what you want to save.
 
-- **Mail Export** — guides Gmail labeling and Google Takeout.
-- **Email Import** (`letters-home-email-import`) — filters a downloaded MBOX by address, with originals-only or both-direction selection. Local MCP requires Node.js 24+.
-- **Instagram Import** (`letters-home-instagram-import`) — guides JSON export and selected photo-post website import when available. Skills only; no Node.js or MCP server.
+| Where your memories are | Helper to install |
+| --- | --- |
+| Gmail | **Mail Export** helps you download selected messages with Google Takeout. **Email Import** helps you pick which correspondence to add from that download. |
+| Outlook.com or Hotmail | **Email Import** helps you save and upload the messages you choose. |
+| Instagram | **Instagram Import** helps you download and add selected photo posts. |
 
-## Codex
+## What to ask your assistant
+
+- **Gmail:** “Help me save the emails my daughter sent during her mission.” The helper can guide you through Google Takeout, then help you select original letters or include both sides of the conversation.
+- **Outlook or Hotmail:** “Help me bring my Hotmail emails into my Letters Home collection.” The helper walks you through downloading the messages you choose, one at a time. Outlook calls each saved email an **EML file**. You can upload one saved email or group several in a ZIP file and upload them together. Full mailbox backups in PST or OLM format are unsupported.
+- **Instagram:** “Help me add selected Instagram photo posts to my Letters Home collection.”
+
+You choose what to keep and which collection receives it. Your assistant can help in the browser when it has browser and file access. It can also give you steps to follow yourself.
+
+## Install the helper you need
+
+Install directly from the Letters Home GitHub repository. In each example, the `marketplace add` command tells your assistant where to find the plugins on GitHub. Then run the install command for each helper you want and restart your assistant. See the [setup guide](GUIDE.md) for details, including the Node.js 24+ requirement for the local Gmail archive filter.
+
+### Codex
 
 ```sh
 codex plugin marketplace add sendlettershome/letters-home-plugins --ref main
@@ -15,7 +29,7 @@ codex plugin add letters-home-email-import@letters-home
 codex plugin add letters-home-instagram-import@letters-home
 ```
 
-## Claude Code
+### Claude Code
 
 ```sh
 claude plugin marketplace add sendlettershome/letters-home-plugins
@@ -24,35 +38,11 @@ claude plugin install letters-home-email-import@letters-home
 claude plugin install letters-home-instagram-import@letters-home
 ```
 
-Install only the plugins you need, then restart your host.
+## Before you upload
 
-## How do I use this?
+Sign in on the provider's website and keep your password out of chat. Review the chosen files and collection before approving an upload. Gmail filtering happens on your computer. Check the results if you asked for originals only, since some replies can slip through. For Outlook and Hotmail, you choose each message yourself. A saved reply can still contain earlier messages quoted inside it.
 
-Ask your agent: **“Help me export emails from alex@example.com and upload them to my Letters Home collection.”** Already have an export? Say **“Help me import this MBOX.”**
-
-The agent guides the export, asks which messages to keep, filters the downloaded archive, and helps upload it to the collection you choose.
-
-With the separate Instagram Import plugin installed, ask **“Help me export my Instagram photo posts and import selected
-posts into my Letters Home collection.”** The `instagram-import` skill checks
-website availability, guides a posts-only JSON export, and helps review the
-unzipped folder in the signed-in website. Instagram archives never go through
-the email MCP tools. Browser/file access depends on the host; manual steps remain
-available. No Graph API connection or Creator-account switch is provided.
-
-| Choose | What you keep |
-| --- | --- |
-| **Original messages only** | Messages from that address that do not look like replies. Replies from either side are excluded when detected. |
-| **Both sides, including replies** | Messages to or from that address, including replies, for a two-way conversation. |
-
-“Both sides” selects matching messages, not every message Gmail groups into a thread. Original-only detection can miss replies; quoted text inside a selected message is retained. Review results before uploading.
-
-You handle sign-in and Google’s export download. Browser assistance depends on your agent’s capabilities; manual steps are provided when needed.
-
-## Privacy and setup
-
-No Gmail API connection or Google credentials. Filtering runs locally in an approved folder; upload requires your authorization. Browser assistance can expose page information to your AI host. Original-only detection has limitations—review results before uploading.
-
-See the [setup and privacy guide](GUIDE.md) for folder configuration, supported files, limits, and updates. This repository marketplace is separate from the official OpenAI and Anthropic directories.
+Read the [setup and privacy guide](GUIDE.md) for supported files, browser access, limits, and updates.
 
 [Support](https://sendlettershome.com/contact) · [Privacy](https://sendlettershome.com/privacy-policy) · [Terms](https://sendlettershome.com/terms-of-use)
 
